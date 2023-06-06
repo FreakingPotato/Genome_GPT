@@ -1,0 +1,1 @@
+ssh -N -L 8348:gadi-gpu-v100-0155.gadi.nci.org.au:8353 kd1348@gadi.nci.org.au 

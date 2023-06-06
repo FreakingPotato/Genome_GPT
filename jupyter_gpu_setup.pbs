@@ -1,0 +1,62 @@
+
+### Warning: The PBS file varies depending on your project, usage and task. The following
+### is a generic template for launching jupyter server on Gadi. You should customise the
+### file to suit your own purpose.
+
+### jupyter_setup.pbs ###
+
+#!/bin/bash
+
+#PBS -N jupyter_setup
+
+#PBS -P vp91
+
+#PBS -q gpuvolta
+###wall clock time limit for the job, the job will be forcely terminated once it hits to the walltime
+#PBS -l walltime=02:00:00  
+
+### number of CPU
+#PBS -l ncpus=24
+
+### number of GPU, only if the queue is gpuvolta 
+#PBS -l ngpus=2              
+
+###  memory limit
+#PBS -l mem=160GB           
+
+###  local disk limit
+#PBS -l jobfs=100GB        
+
+### define current working directory
+#PBS -l wd
+
+### define the fold to store standard error and output message
+#PBS -e ./gadi_logs/
+#PBS -o ./gadi_logs/
+
+###PBS -l storage=scratch/vp91
+#PBS -l storage=gdata/ik06
+
+#PBS -M ke.ding@anu.edu.au
+#PBS -m b   
+
+# load module for gpu support
+module load cuda/12.0.0 
+# module load cudnn/8.6.0-cuda11 
+# module load nccl/2.10.3-cuda11.4 
+module load openmpi/4.1.2
+# module load magma/2.6.0
+# module load fftw3/3.3.8
+
+# change the path based on your own conda 
+source /g/data/ik06/stark/anaconda3/etc/profile.d/conda.sh
+conda init bash
+conda activate pytorch_env
+
+# change the file path 
+cd /g/data/ik06/stark/Genome_GPT/
+source jupyter_port_forwarding.sh
+
+
+###Keep the server up until the job hits the wall time, otherwise it terminates right at EOF
+sleep infinity

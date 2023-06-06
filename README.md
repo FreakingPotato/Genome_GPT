@@ -23,6 +23,27 @@
 
 > DAY 1: 
 1. checking out the latest minGPT as well as nanoGPT repo
-2. adding ArgumentParser 
-3. adding profiling code: Nsight??
-4. adding multi-node code: Horovod, NCCL??
+2. adding ArgumentParser [DONE]
+3. adding profiling code: Nsight [DONE]
+
+    -- keep the block length short to get the result quicker, however, the profile info maybe invalid for block with different length
+
+    -- try profiling with less iterations (currently, profiling 5 epochs will generate 1G file)
+
+    -- nsys profiling is very memory intensive
+
+        nsys profile python3 genome_gpt.py -n_blocks 10 -b 10240
+
+4. adding multi-node code: Horovod, NCCL?? Huggingface Accelerate/Microsoft DeepSpeed/ Ignite/ 
+
+    https://opus.nci.org.au/display/DAE/Pytorch+using+Horovod
+5. optimizer: Sophia [DONE]
+
+    adopted the code from: https://github.com/karpathy/minGPT
+
+6. get baseline of current model: training speed, perplexity (loss) 
+
+7. exon sequencing dataset
+
+
+8. (optional) Model Parallelism: nvidia transformer-lm

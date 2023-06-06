@@ -2,3 +2,13 @@ data/hg38.500m.100m.10m.aa
 data/hg38.500m.100m.10m.ab
 data/hg38.500m.100m.aa
 data/hg38.500m.100m.ab
+report1.nsys-rep
+.ipynb_checkpoints/genome_gpt-checkpoint.py
+.ipynb_checkpoints/test-checkpoint.ipynb
+mingpt/__pycache__/__init__.cpython-39.pyc
+mingpt/__pycache__/model.cpython-39.pyc
+mingpt/__pycache__/sophia.cpython-39.pyc
+mingpt/__pycache__/trainer.cpython-39.pyc
+mingpt/__pycache__/utils.cpython-39.pyc
+horovod_gpu_nodes.pbs
+saved_model.pth
